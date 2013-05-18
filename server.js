@@ -1,9 +1,9 @@
 
-var Connect = require('connect');
+var Express = require('express');
 var Optimist = require('optimist');
-var Path = require('path');
 
-var Proxy = require('./proxy');
+var Catcher = require('./catcher');
+var Path = require('path');
 
 var options = Optimist
 	.alias('t', 'target')
@@ -13,19 +13,13 @@ var options = Optimist
 	['default']('t', __dirname)
 	['default']('p', 8081)
 	['default']('l', false)
-	['default']('proxyport', 8443)
 	.argv;
 
-var server = Connect();
-server.use('/pub', Connect.static(Path.resolve(__dirname, options.target)));
+var server = Express();
+server.use(Express.logger());
 
-if(options.proxyhost) {
-	server.use(Proxy.create({
-		host : options.proxyhost,
-		port : options.proxyport,
-		bind : false,
-	}));
-}
+server.use('/pub', Catcher(Path.resolve(__dirname, options.target)));
+
 
 server.listen(options.port, (options.local ? "127.0.0.1" : null), function() {
 	console.log("Listening on " + (options.local ? "localhost:" : "*:") + options.port);

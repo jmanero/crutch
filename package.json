@@ -7,7 +7,7 @@
 		"email" : "jmanero@dyn.com"
 	},
 	"dependencies" : {
-		"connect" : "*",
+		"express" : "3.2.x",
 		"optimist" : "0.3.4"
 	}
 }
