@@ -15,4 +15,5 @@ node server.js -t /var/www -p 8080
 * **-l --local** Only listen on `locahost`. Defaults to false
 
 ### Upstart
-An upstart configuration is included in `crutch.conf`. Copy it to `/etc/init/` and run `sudo start crutch`
+An upstart configuration is included in `crutch.conf`. You will need to edit the path to `server.js` and set
+the command arguments (e.g. port annd path)
