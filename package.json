@@ -1,7 +1,7 @@
 {
 	"name" : "crutch",
 	"description" : "Stand up a simple static web server in < 1 minute",
-	"version" : "0.1.1",
+	"version" : "0.1.2",
 	"author" : {
 		"name" : "John Manero",
 		"email" : "jmanero@dyn.com"
