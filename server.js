@@ -1,8 +1,5 @@
-
 var Express = require('express');
 var Optimist = require('optimist');
-
-var Catcher = require('./catcher');
 var Path = require('path');
 
 var options = Optimist
@@ -18,8 +15,8 @@ var options = Optimist
 var server = Express();
 server.use(Express.logger());
 
-server.use('/pub', Catcher(Path.resolve(__dirname, options.target)));
-
+server.use(Express.directory(Path.resolve(__dirname, options.target)));
+server.use(Express.static(Path.resolve(__dirname, options.target)));
 
 server.listen(options.port, (options.local ? "127.0.0.1" : null), function() {
 	console.log("Listening on " + (options.local ? "localhost:" : "*:") + options.port);
