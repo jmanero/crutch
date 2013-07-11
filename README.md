@@ -13,3 +13,6 @@ node server.js -t /var/www -p 8080
 * **-t --target <path>** FS path to serve. Defaults to `./`
 * **-p --port <number>** Listen port. Default 8081
 * **-l --local** Only listen on `locahost`. Defaults to false
+
+### Upstart
+An upstart configuration is included in `crutch.conf`. Copy it to `/etc/init/` and run `sudo start crutch`
