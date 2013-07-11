@@ -3,6 +3,9 @@ crutch
 Simple file server
 
 ```
+curl -L https://github.com/jmanero/crutch/archive/0.1.1.tar.gz | tar -xvz
+cd crutch-0.1.0
+npm install
 node server.js -t /var/www -p 8080
 ```
 
